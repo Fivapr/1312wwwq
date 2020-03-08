@@ -7,15 +7,9 @@ import { history } from '../../store/configureStore'
 
 import styles from './styles'
 
-const App = ({
-  theme,
-  classes,
-  loggedIn,
-  resetPasswordModalProps,
-  isAppPasswordOpen
-}) => {
+const App = ({}) => {
   return (
-    <MuiThemeProvider theme={createTheme(theme)}>
+    <MuiThemeProvider theme={createTheme()}>
       <ConnectedRouter history={history}>
         <Settings />
       </ConnectedRouter>

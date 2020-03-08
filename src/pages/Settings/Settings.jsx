@@ -2,7 +2,7 @@ import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, withRouter } from 'react-router-dom'
 import styles from './styles'
 
 import List from './List'
@@ -13,6 +13,7 @@ import Referral from './Referral'
 import BalanceHistory from './BalanceHistory'
 
 const SettingsPage = ({ classes, match }) => {
+  console.log(match.url)
   const withPaper = Comp => props => (
     <Paper className={classes.right}>
       <Comp {...props} />
@@ -23,10 +24,6 @@ const SettingsPage = ({ classes, match }) => {
     <div className={classes.root}>
       <Paper className={classes.header}>
         <Header />
-      </Paper>
-
-      <Paper className={classes.left}>
-        <List />
       </Paper>
 
       <Route path={`${match.url}/account`} render={withPaper(Account)} />
@@ -45,4 +42,4 @@ const SettingsPage = ({ classes, match }) => {
   )
 }
 
-export default withStyles(styles)(SettingsPage)
+export default withRouter(withStyles(styles)(SettingsPage))

@@ -1,44 +1,44 @@
 const style = theme => ({
   '@global': {
     body: {
-      width: ' 100vw',
-      height: '100vh',
+      width: ' 100vw!important',
+      height: '100vh!important',
       margin: 0,
       padding: 0,
       fontFamily: " 'Roboto', sans-serif",
       '-webkit-user-select': 'none',
-      background: `${theme.palette.background.default}`,
+      background: `${theme.palette.background.default}`
     },
     html: {
       background: `${theme.palette.background.default}`,
-      height: '100%!important',
+      height: '100%!important'
     },
 
     ol: {
-      listStyle: 'none outside none',
+      listStyle: 'none outside none'
     },
     ul: {
-      listStyle: 'none outside none',
+      listStyle: 'none outside none'
     },
     li: {
-      listStyle: 'none',
+      listStyle: 'none'
     },
     '.react-grid-layout': {
-      background: theme.palette.background.main,
+      background: theme.palette.background.main
     },
     '.layoutJSON': {
       marginTop: 10,
-      padding: 10,
+      padding: 10
     },
     '.columns': {
-      columns: 120,
+      columns: 120
     },
     '.react-grid-item': {
-      boxSizing: 'border-box',
+      boxSizing: 'border-box'
     },
     '.react-grid-item:not(.react-grid-placeholder)': {},
     '.react-grid-item.resizing': {
-      opacity: 0.9,
+      opacity: 0.9
     },
 
     '.react-grid-item .text': {
@@ -50,34 +50,34 @@ const style = theme => ({
       left: 0,
       right: 0,
       margin: 'auto',
-      height: 24,
+      height: 24
     },
     '.react-grid-item .minMax ': {
-      fontSize: 12,
+      fontSize: 12
     },
     '.react-grid-item .add': {
-      cursor: 'pointer',
+      cursor: 'pointer'
     },
     '.react-grid-dragHandleExample': {
-      cursor: 'move',
+      cursor: 'move'
     },
     'li b': {
       fontSize: 19,
-      lineHeight: 14,
+      lineHeight: 14
     },
 
     '.react-grid-item.cssTransforms': {
-      transitionProperty: 'transform',
+      transitionProperty: 'transform'
     },
     ' .react-grid-item.resizing ': {
       zIndex: 1,
-      willChange: 'width, height',
+      willChange: 'width, height'
     },
 
     '.react-grid-item.react-draggable-dragging': {
       transition: 'none',
       zIndex: 3,
-      willChange: 'transform',
+      willChange: 'transform'
     },
 
     '.react-grid-item.react-grid-placeholder': {
@@ -85,7 +85,7 @@ const style = theme => ({
       opacity: 0.2,
       transitionDuration: '100ms',
       zIndex: 2,
-      userSelect: 'none',
+      userSelect: 'none'
     },
 
     ' .react-grid-item > .react-resizable-handle ': {
@@ -102,8 +102,8 @@ const style = theme => ({
       backgroundRepeat: 'no-repeat',
       backgroundOrigin: 'content-box',
       boSsizing: 'border-box',
-      cursor: 'se-resize',
-    },
+      cursor: 'se-resize'
+    }
   },
 
   root: {
@@ -111,8 +111,8 @@ const style = theme => ({
     justifyContent: 'flex-start',
     flexDirection: 'column',
     overflow: 'hidden',
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '100%'
   },
 
   container: {
@@ -120,14 +120,14 @@ const style = theme => ({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
 
   leftMenu: {
     height: '100%',
     width: 64,
-    background: theme.palette.background.paper,
-  },
-});
+    background: theme.palette.background.paper
+  }
+})
 
-export default style;
+export default style
