@@ -44,13 +44,16 @@ const Register = ({
   url,
   push,
   theme,
-  history
+  history,
+  match
 }) => {
+  const initialRefCode = window.location.href.split('=')[1]
+
   const linkToLogin = () => push(`${url}/login`)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
-  const [refCode, setRefCode] = useState('')
+  const [refCode, setRefCode] = useState(initialRefCode)
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [repeatPasswordError, setRepeatPasswordError] = useState('')
