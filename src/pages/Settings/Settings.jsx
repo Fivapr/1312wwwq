@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 import styles from './styles'
 
-import List from './List'
 import Header from './Header'
 import Feedback from './Feedback'
 import Account from './Account'

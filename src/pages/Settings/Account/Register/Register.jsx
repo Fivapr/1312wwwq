@@ -3,97 +3,110 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { Fragment, useState, useEffect } from 'react';
-import { withRouter } from 'react-router';
-import { withStyles } from '@material-ui/core/styles';
+import whiteIcon from '../whiteIcon.svg'
+import blackIcon from '../blackIcon.svg'
+import React, { Fragment, useState, useEffect } from 'react'
+import { withRouter } from 'react-router'
+import { withStyles } from '@material-ui/core/styles'
 
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
-import { api } from '../../../../loggerApi';
-import styles from '../Login/styles';
+import { api } from '../../../../loggerApi'
+import styles from '../Login/styles'
 
-const ENTER_KEY = 'Enter';
+const ENTER_KEY = 'Enter'
 
 const validateEmail = email => {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-};
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(String(email).toLowerCase())
+}
 
 export const useEnterSubmit2 = (handleSubmit, ...args) =>
   useEffect(() => {
     const handler = event => {
       if (event.key === ENTER_KEY) {
-        handleSubmit();
+        handleSubmit()
       }
-    };
-    document.addEventListener('keydown', handler);
+    }
+    document.addEventListener('keydown', handler)
 
     return () => {
-      document.removeEventListener('keydown', handler);
-    };
-  }, [...args]);
+      document.removeEventListener('keydown', handler)
+    }
+  }, [...args])
 
-const Register = ({ classes, setEmailForActivateCode, url, push, theme, history }) => {
-  const linkToLogin = () => push(`${url}/login`);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const [refCode, setRefCode] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [repeatPasswordError, setRepeatPasswordError] = useState('');
-  const [serverError, setServerError] = useState('');
+const Register = ({
+  classes,
+  setEmailForActivateCode,
+  url,
+  push,
+  theme,
+  history
+}) => {
+  const linkToLogin = () => push(`${url}/login`)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
+  const [refCode, setRefCode] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const [repeatPasswordError, setRepeatPasswordError] = useState('')
+  const [serverError, setServerError] = useState('')
 
   const testEmail = () => {
     if (email && !validateEmail(email)) {
-      setEmailError('Email must be valid');
+      setEmailError('Email must be valid')
     }
-  };
+  }
 
   const testPassword = () => {
     if (password && (password.length < 6 || password.length > 32)) {
-      setPasswordError('Must be from 6 to 32 symbols.');
+      setPasswordError('Must be from 6 to 32 symbols.')
     }
-  };
+  }
 
   const testRepeatPassword = () => {
     if (repeatPassword && password !== repeatPassword) {
-      setRepeatPasswordError('Passwords must be the same.');
+      setRepeatPasswordError('Passwords must be the same.')
     }
-  };
+  }
 
   const handleSubmit = async () => {
     if (!validateEmail(email)) {
-      setEmailError('Email must be valid');
-      return;
+      setEmailError('Email must be valid')
+      return
     }
 
     if (password.length < 6 || password.length > 32) {
-      setPasswordError('Must be from 6 to 32 symbols.');
-      return;
+      setPasswordError('Must be from 6 to 32 symbols.')
+      return
     }
 
     if (password !== repeatPassword) {
-      setRepeatPasswordError('Passwords must be the same.');
-      return;
+      setRepeatPasswordError('Passwords must be the same.')
+      return
     }
 
-    const { success, error, code } = await api.signUp({ email, password, refCode });
+    const { success, error, code } = await api.signUp({
+      email,
+      password,
+      refCode
+    })
 
     // code===0 ~ needs verification
     if (!success && code !== 0) {
-      setServerError(error);
-      return;
+      setServerError(error)
+      return
     }
 
-    history.push(`${url}/verify`);
-    setEmailForActivateCode(email);
-  };
+    history.push(`${url}/verify`)
+    setEmailForActivateCode(email)
+  }
 
-  useEnterSubmit2(handleSubmit, email, password, repeatPassword);
+  useEnterSubmit2(handleSubmit, email, password, repeatPassword)
 
   return (
     <Fragment>
@@ -102,7 +115,7 @@ const Register = ({ classes, setEmailForActivateCode, url, push, theme, history 
           {theme.palette.type === 'dark' ? (
             <img
               className={classes.icon}
-              src="../resources/whiteIcon.svg"
+              src={whiteIcon}
               width="128"
               height="128"
               alt="icon"
@@ -110,7 +123,7 @@ const Register = ({ classes, setEmailForActivateCode, url, push, theme, history 
           ) : (
             <img
               className={classes.icon}
-              src="../resources/blackIcon.svg"
+              src={blackIcon}
               width="128"
               height="128"
               alt="icon"
@@ -128,8 +141,8 @@ const Register = ({ classes, setEmailForActivateCode, url, push, theme, history 
               helperText={emailError}
               value={email}
               onChange={e => {
-                setEmail(e.target.value);
-                setEmailError('');
+                setEmail(e.target.value)
+                setEmailError('')
               }}
             />
             <TextField
@@ -143,8 +156,8 @@ const Register = ({ classes, setEmailForActivateCode, url, push, theme, history 
               helperText={passwordError}
               value={password}
               onChange={e => {
-                setPassword(e.target.value);
-                setPasswordError('');
+                setPassword(e.target.value)
+                setPasswordError('')
               }}
             />
             <TextField
@@ -158,8 +171,8 @@ const Register = ({ classes, setEmailForActivateCode, url, push, theme, history 
               helperText={repeatPasswordError}
               value={repeatPassword}
               onChange={e => {
-                setRepeatPassword(e.target.value);
-                setRepeatPasswordError('');
+                setRepeatPassword(e.target.value)
+                setRepeatPasswordError('')
               }}
             />
             <TextField
@@ -170,10 +183,12 @@ const Register = ({ classes, setEmailForActivateCode, url, push, theme, history 
               className={classes.textField}
               value={refCode}
               onChange={e => {
-                setRefCode(e.target.value);
+                setRefCode(e.target.value)
               }}
             />
-            {serverError && <div className={classes.errorText}>{serverError}</div>}
+            {serverError && (
+              <div className={classes.errorText}>{serverError}</div>
+            )}
             <Button
               classes={{ root: classes.submitButton }}
               variant="outlined"
@@ -194,7 +209,7 @@ const Register = ({ classes, setEmailForActivateCode, url, push, theme, history 
         </Paper>
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default withRouter(withStyles(styles, { withTheme: true })(Register));
+export default withRouter(withStyles(styles, { withTheme: true })(Register))
