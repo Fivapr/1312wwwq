@@ -6,7 +6,6 @@ import { Route, Redirect, withRouter } from 'react-router-dom'
 import styles from './styles'
 
 import Header from './Header'
-import Feedback from './Feedback'
 import Account from './Account'
 import Referral from './Referral'
 import BalanceHistory from './BalanceHistory'
@@ -26,7 +25,6 @@ const SettingsPage = ({ classes, match }) => {
       </Paper>
 
       <Route path={`${match.url}/account`} render={withPaper(Account)} />
-      <Route path={`${match.url}/feedback`} render={withPaper(Feedback)} />
       <Route path={`${match.url}/referral/`} render={withPaper(Referral)} />
       <Route
         path={`${match.url}/balanceHistory/`}
