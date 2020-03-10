@@ -1,4 +1,4 @@
-import { scrollbarStyles } from '../../../createTheme';
+import { scrollbarStyles } from '../../../createTheme'
 
 const styles = theme => {
   return {
@@ -7,20 +7,20 @@ const styles = theme => {
       height: 360,
       ...scrollbarStyles,
       overflowY: 'hidden',
-      overflowX: 'hidden',
+      overflowX: 'hidden'
     },
 
     flex: {
       display: 'flex',
       flexDirection: 'column',
       width: '100px',
-      marginLeft: theme.spacing.unit * 4,
+      marginLeft: theme.spacing.unit * 4
     },
 
     row: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center',
+      alignItems: 'center'
     },
 
     cell: {
@@ -30,21 +30,22 @@ const styles = theme => {
       alignItems: 'center',
 
       color: theme.palette.text.primary,
-      fontSize: 18,
+      fontSize: 18
     },
 
     text: {
       margin: theme.spacing.unit * 4,
       color: theme.palette.text.primary,
-      fontSize: '15px',
+      fontSize: '15px'
     },
 
     refCode: {
       margin: theme.spacing.unit * 4,
       marginTop: 0,
       marginLeft: theme.spacing.unit * 6,
-    },
-  };
-};
+      width: '85%'
+    }
+  }
+}
 
-export default styles;
+export default styles
