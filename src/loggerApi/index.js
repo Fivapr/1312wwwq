@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const baseURL = 'http://localhost:19999/api/v1/user';
-const baseURL = 'http://oneexbit.com:88/api/v1/user'
+const baseURL = 'https://oneexbit.com/api/v1/user'
 
 class Api {
   constructor(options = {}) {
@@ -87,7 +87,7 @@ class Api {
 
   async requestPlans() {
     const { data = {} } = await this.client
-      .get('http://oneexbit.com:88/api/v1/plan')
+      .get('https://oneexbit.com/api/v1/plan')
       .catch(error => error.response)
     return data
   }
