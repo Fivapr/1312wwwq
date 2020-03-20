@@ -43,7 +43,7 @@ const Referral = ({ classes, user }) => {
       </div>
 
       <TextField
-        value={`https://account.oneexbit.com/?refCode=${user.referralCode}`}
+        value={`https://account.oneexbit.com/#//account/register?refCode=${user.referralCode}`}
         className={classes.refCode}
         fullWidth
       />
