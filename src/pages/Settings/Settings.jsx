@@ -24,16 +24,16 @@ const SettingsPage = ({ classes, match }) => {
         <Header />
       </Paper>
 
-      <Route path={`${match.url}/account`} render={withPaper(Account)} />
-      <Route path={`${match.url}/referral/`} render={withPaper(Referral)} />
+      <Route path={`${match.url}account`} render={withPaper(Account)} />
+      <Route path={`${match.url}referral/`} render={withPaper(Referral)} />
       <Route
-        path={`${match.url}/balanceHistory/`}
+        path={`${match.url}balanceHistory/`}
         render={withPaper(BalanceHistory)}
       />
       <Route
         exact
-        path={`${match.url}/`}
-        render={() => <Redirect to={`${match.url}/account`} />}
+        path={`${match.url}`}
+        render={() => <Redirect to={`${match.url}account`} />}
       />
     </div>
   )

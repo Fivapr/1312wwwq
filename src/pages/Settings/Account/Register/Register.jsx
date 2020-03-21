@@ -47,7 +47,7 @@ const Register = ({
   history,
   match
 }) => {
-  const initialRefCode = window.location.href.split('=')[1]
+  const initialRefCode = window.location.href.split('/')[6]
 
   const linkToLogin = () => push(`${url}/login`)
   const [email, setEmail] = useState('')
