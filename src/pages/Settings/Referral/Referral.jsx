@@ -9,13 +9,14 @@ import {
   TableRow,
   Table,
   TableBody,
-  TextField
+  TextField,
+  Button,
 } from '@material-ui/core'
 
 const Referral = ({ classes, user }) => {
   const [referrals, setReferrals] = useState({
     percents: { '1': 0.3, '2': 0.2, '3': 0.1 },
-    referrals: { '1': 0, '2': 0, '3': 0 }
+    referrals: { '1': 0, '2': 0, '3': 0 },
   })
   useEffect(() => {
     const requestReferrals = async () => {
@@ -97,6 +98,18 @@ const Referral = ({ classes, user }) => {
           Currently you don't have anyone invited.
         </div>
       )}
+
+      <Button
+        variant="outlined"
+        className={classes.button}
+        href={
+          window.navigator.platform == 'MacIntel'
+            ? 'https://github.com/oneexbit/oneexbit-release/releases/download/v0.6.0/OneExBit-Platform-Setup-0.6.0.dmg'
+            : 'https://github.com/oneexbit/oneexbit-release/releases/download/v0.6.0/OneExBit-Platform-Setup-0.6.0.exe'
+        }
+      >
+        Download App
+      </Button>
     </Fragment>
   )
 }
